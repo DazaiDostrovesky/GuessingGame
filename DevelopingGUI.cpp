@@ -16,7 +16,7 @@ int main()
 
     while (!WindowShouldClose()) 
     {
-        if (currentState == TITLE_SCREEN && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        if (currentState == TITLE_SCREEN and IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
             Vector2 mouseCoordinates = GetMousePosition();
             if (CheckCollisionPointRec(mouseCoordinates, startButton)) 
