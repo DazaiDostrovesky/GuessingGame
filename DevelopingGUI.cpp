@@ -5,8 +5,8 @@ GameState currentState = TITLE_SCREEN;
 
 int main()
 {
-    const int screenWidth = 800;
-    const int screenHeight = 800;
+    const int screenWidth = 1024;
+    const int screenHeight = 768;
     InitWindow(screenWidth, screenHeight, "Test");
 
     Rectangle startButton = { screenWidth/2 - 150, screenHeight/2 - 50, 300, 100 };
