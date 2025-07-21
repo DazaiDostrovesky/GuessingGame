@@ -66,22 +66,16 @@ int main()
             DrawText("and get it correct in three attempts.", 150, 150, 30, DARKGRAY);
             
             DrawRectangleRec(difficulty1, Difficultybutton1);
-            DrawText("1 to 10", 
-                    difficulty1.x + difficulty1.width/2 - MeasureText("1 to 10", 30)/2,
-                    difficulty1.y + difficulty1.height/2 - 15,
-                    30, BLACK);
+            DrawText("1 to 10", difficulty1.x + difficulty1.width/2 - MeasureText("1 to 10", 30)/2, difficulty1.y + difficulty1.height/2 - 15, 30, BLACK);
+                    
             
             DrawRectangleRec(difficulty2, Difficultybutton2);
-            DrawText("20 to 50", 
-                    difficulty2.x + difficulty2.width/2 - MeasureText("20 to 50", 30)/2,
-                    difficulty2.y + difficulty2.height/2 - 15,
-                    30, BLACK);
+            DrawText("20 to 50", difficulty2.x + difficulty2.width/2 - MeasureText("20 to 50", 30)/2, difficulty2.y + difficulty2.height/2 - 15, 30, BLACK);
+                    
             
             DrawRectangleRec(difficulty3, Difficultybutton3);
-            DrawText("30 to 100", 
-                    difficulty3.x + difficulty3.width/2 - MeasureText("30 to 100", 30)/2,
-                    difficulty3.y + difficulty3.height/2 - 15,
-                    30, BLACK);
+            DrawText("30 to 100", difficulty3.x + difficulty3.width/2 - MeasureText("30 to 100", 30)/2, difficulty3.y + difficulty3.height/2 - 15, 30, BLACK);
+                  
         }
         else if (currentState == DIFFICULTY1)
         {
