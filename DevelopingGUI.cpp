@@ -55,10 +55,8 @@ int main()
         {
             DrawText("The Guessing Game", screenWidth/2 - MeasureText("The Guessing Game", 40)/2, 100, 40, BLACK);
             DrawRectangleRec(startButton, buttonColor);
-            DrawText("Start", 
-                    startButton.x + startButton.width/2 - MeasureText("Start", 30)/2,
-                    startButton.y + startButton.height/2 - 15,
-                    30, BLACK);
+            DrawText("Start", startButton.x + startButton.width/2 - MeasureText("Start", 30)/2, startButton.y + startButton.height/2 - 15, 30, BLACK);
+                
         }
         else if (currentState == GAME_SCREEN)
         {
