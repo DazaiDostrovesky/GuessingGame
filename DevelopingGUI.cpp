@@ -7,8 +7,10 @@ int main()
 {
     const int screenWidth = 1024;
     const int screenHeight = 768;
+    
     InitWindow(screenWidth, screenHeight, "Test");
 
+    Rectangle inputBox = { screenWidth/2 - 100, 300, 200, 50 };
     Rectangle startButton = { screenWidth/2 - 150, screenHeight/2 - 50, 300, 100 };
     Rectangle difficulty1 = { screenWidth/2 - 150, screenHeight/2 - 50, 300, 100 };
     Rectangle difficulty2 = { screenWidth/2 - 150, screenHeight/2 + 100, 300, 100 };
@@ -18,7 +20,8 @@ int main()
     Color Difficultybutton1 = GREEN;
     Color Difficultybutton2 = YELLOW;
     Color Difficultybutton3 = RED;
-
+    Color boxColor = LIGHTGRAY;
+    
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) 
@@ -56,7 +59,6 @@ int main()
             DrawText("The Guessing Game", screenWidth/2 - MeasureText("The Guessing Game", 40)/2, 100, 40, BLACK);
             DrawRectangleRec(startButton, buttonColor);
             DrawText("Start", startButton.x + startButton.width/2 - MeasureText("Start", 30)/2, startButton.y + startButton.height/2 - 15, 30, BLACK);
-                
         }
         else if (currentState == GAME_SCREEN)
         {
@@ -65,15 +67,12 @@ int main()
             
             DrawRectangleRec(difficulty1, Difficultybutton1);
             DrawText("1 to 10", difficulty1.x + difficulty1.width/2 - MeasureText("1 to 10", 30)/2, difficulty1.y + difficulty1.height/2 - 15, 30, BLACK);
-                    
             
             DrawRectangleRec(difficulty2, Difficultybutton2);
             DrawText("20 to 50", difficulty2.x + difficulty2.width/2 - MeasureText("20 to 50", 30)/2, difficulty2.y + difficulty2.height/2 - 15, 30, BLACK);
-                    
             
             DrawRectangleRec(difficulty3, Difficultybutton3);
             DrawText("30 to 100", difficulty3.x + difficulty3.width/2 - MeasureText("30 to 100", 30)/2, difficulty3.y + difficulty3.height/2 - 15, 30, BLACK);
-                  
         }
         else if (currentState == DIFFICULTY1)
         {
@@ -87,6 +86,13 @@ int main()
         {
             DrawText("Difficulty 3 Selected (30-100)", 250, 100, 30, BLACK);
         }
+        
+        if (currentState == DIFFICULTY1 or currentState == DIFFICULTY2 or currentState == DIFFICULTY3)
+        {
+            DrawText("Enter your guess (press enter key):",screenWidth/2 - MeasureText("Enter your guess (press enter key):",20)/2,250,20,BLACK);
+            DrawRectangleRec(inputBox, boxColor);
+            DrawRectangleLinesEx(inputBox, 2, DARKGRAY);
+        }    
             
         EndDrawing();
     }
