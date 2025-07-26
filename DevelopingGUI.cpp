@@ -1,4 +1,6 @@
 #include <raylib.h>
+#include <cstring>
+#include <string>
 
 enum GameState { TITLE_SCREEN, GAME_SCREEN, DIFFICULTY1, DIFFICULTY2, DIFFICULTY3 };
 GameState currentState = TITLE_SCREEN;
@@ -22,6 +24,9 @@ int main()
     Color Difficultybutton3 = RED;
     Color boxColor = LIGHTGRAY;
     
+    char input_text[32] = "\0";
+    bool text_allowed = false;
+    
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) 
@@ -40,14 +45,45 @@ int main()
             if (CheckCollisionPointRec(mouseCoordinates, difficulty1))
             {
                 currentState = DIFFICULTY1;
+                text_allowed = true;
             }
             else if (CheckCollisionPointRec(mouseCoordinates, difficulty2))
             {
                 currentState = DIFFICULTY2;
+                text_allowed = true;
             }
             else if (CheckCollisionPointRec(mouseCoordinates, difficulty3))
             {
                 currentState = DIFFICULTY3;
+                text_allowed = true;
+            }
+        }
+
+        if ((currentState == DIFFICULTY1 or currentState == DIFFICULTY2 or currentState == DIFFICULTY3) and text_allowed)
+        {
+            int key_pressed = GetCharPressed();
+            while (key_pressed > 0)
+            {
+                if ((key_pressed >= '0' and key_pressed <= '9') or key_pressed == KEY_BACKSPACE)
+                {
+                    if (key_pressed == KEY_BACKSPACE)
+                    {
+                        int length = strlen(input_text);
+                        if (length > 0) input_text[length-1] = '\0';
+                    }
+                    else if (strlen(input_text) < 31)
+                    {
+                        int length = strlen(input_text);
+                        input_text[length] = (char)key_pressed;
+                        input_text[length+1] = '\0';
+                    }
+                }
+                key_pressed = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_ENTER) and strlen(input_text) > 0)
+            {
+                input_text[0] = '\0';
             }
         }
 
@@ -92,6 +128,7 @@ int main()
             DrawText("Enter your guess (press enter key):",screenWidth/2 - MeasureText("Enter your guess (press enter key):",20)/2,250,20,BLACK);
             DrawRectangleRec(inputBox, boxColor);
             DrawRectangleLinesEx(inputBox, 2, DARKGRAY);
+            DrawText(input_text, inputBox.x + 10, inputBox.y + 15, 30, BLACK);
         }    
             
         EndDrawing();
