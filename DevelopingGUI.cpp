@@ -33,29 +33,36 @@ int main()
     {
         Vector2 mouseCoordinates = GetMousePosition();
         
-        if (currentState == TITLE_SCREEN and IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        // Handle mouse clicks
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
-            if (CheckCollisionPointRec(mouseCoordinates, startButton)) 
+            if (currentState == TITLE_SCREEN)
             {
-                currentState = GAME_SCREEN;
+                if (CheckCollisionPointRec(mouseCoordinates, startButton)) 
+                {
+                    currentState = GAME_SCREEN;
+                }
             }
-        }
-        else if (currentState == GAME_SCREEN and IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        {
-            if (CheckCollisionPointRec(mouseCoordinates, difficulty1))
+            else if (currentState == GAME_SCREEN)
             {
-                currentState = DIFFICULTY1;
-                text_allowed = true;
+                if (CheckCollisionPointRec(mouseCoordinates, difficulty1))
+                {
+                    currentState = DIFFICULTY1;
+                }
+                else if (CheckCollisionPointRec(mouseCoordinates, difficulty2))
+                {
+                    currentState = DIFFICULTY2;
+                }
+                else if (CheckCollisionPointRec(mouseCoordinates, difficulty3))
+                {
+                    currentState = DIFFICULTY3;
+                }
             }
-            else if (CheckCollisionPointRec(mouseCoordinates, difficulty2))
+            
+            // NEW: Proper input box collision check
+            if (currentState == DIFFICULTY1 or currentState == DIFFICULTY2 or currentState == DIFFICULTY3)
             {
-                currentState = DIFFICULTY2;
-                text_allowed = true;
-            }
-            else if (CheckCollisionPointRec(mouseCoordinates, difficulty3))
-            {
-                currentState = DIFFICULTY3;
-                text_allowed = true;
+                text_allowed = CheckCollisionPointRec(mouseCoordinates, inputBox);
             }
         }
 
