@@ -69,9 +69,12 @@ int main()
                     if (key_pressed == KEY_BACKSPACE)
                     {
                         int length = strlen(input_text);
-                        if (length > 0) input_text[length-1] = '\0';
+                        if (length > 0) 
+                        {
+                            input_text[length-1] = '\0';
+                        }
                     }
-                    else if (strlen(input_text) < 31)
+                    else if (strlen(input_text) < 4)
                     {
                         int length = strlen(input_text);
                         input_text[length] = (char)key_pressed;
