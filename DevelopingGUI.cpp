@@ -156,8 +156,8 @@ int main()
                 DrawRectangleRec(startButton, buttonColor);
                 DrawText("Start", 
                         startButton.x + startButton.width/2 - MeasureText("Start", 30)/2,
-                        startButton.y + startButton.height/2 - 15,
-                        30, BLACK);
+                        startButton.y + startButton.height/2 - 15,30, BLACK);
+                        
             }
             else if (currentState == GAME_SCREEN)
             {
