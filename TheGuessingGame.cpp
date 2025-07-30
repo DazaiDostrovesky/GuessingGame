@@ -26,7 +26,7 @@ int main()
     int secret_integer;
     int attempts_remaining;
     int guess;
-    bool game_won;  // Changed from game_lost
+    bool game_won;  
     int min_value;
     int max_value;
     char input_text[32] = "\0";
