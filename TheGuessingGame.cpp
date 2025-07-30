@@ -3,7 +3,7 @@
 #include <string>
 #include <cstring>
 
-enum GameState { TITLE_SCREEN,GAME_SCREEN, DIFFICULTY1, DIFFICULTY2, DIFFICULTY3, PLAYING, RESULT};
+enum GameState { TITLE_SCREEN,GAME_SCREEN, DIFFICULTY1, DIFFICULTY2, DIFFICULTY3, RESULT};
 GameState currentState = TITLE_SCREEN;
 
 int RandomNumber(int min, int max) {
