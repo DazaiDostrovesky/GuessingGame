@@ -48,7 +48,7 @@ int main() {
     Sound buttonClick = LoadSound("button-click.mp3");
     Sound keyboardClick = LoadSound("keyboardclick.mp3");
     Sound rightAnswer = LoadSound("correct.mp3");
-    Sound wrongAnswer = LoadSound("wrong.mp3");
+    Sound wrongAnswer = LoadSound("incorrect.mp3");
 
     int secret_integer;
     int attempts_remaining;
@@ -252,3 +252,4 @@ int main() {
     CloseWindow();
     return 0;
 }
+
